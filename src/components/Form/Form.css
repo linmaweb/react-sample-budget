@@ -1,0 +1,54 @@
+.formWrapper {
+  background: white;
+}
+form {
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 50px 0;
+  margin: 0 auto 50px;
+}
+
+form input,
+form select {
+  width: 80%;
+}
+form label {
+  width: 20%;
+  display: inline-block;
+
+  color: #4f4f4f;
+  text-align: left;
+}
+form input,
+form select {
+  padding: 10px;
+  margin: 4px 0 14px 0;
+  border: 1px solid #eee;
+}
+
+form button {
+  font-family: "Archivo Black", sans-serif;
+  text-transform: uppercase;
+  width: 80%;
+  background: #4f4f4f;
+  color: #fff;
+  border: none;
+  outline: none;
+  padding: 15px 0;
+  margin: 15px 0 0 20%;
+  font-size: 16px;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+form button:focus,
+form button:hover {
+  background: #000;
+}
+
+@media (max-width: 530px) {
+  form label {
+    font-size: 10px;
+  }
+}

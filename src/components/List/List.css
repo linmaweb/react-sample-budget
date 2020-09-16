@@ -1,0 +1,75 @@
+.list .heading {
+  background: #333;
+  font-family: "Archivo Black", sans-serif;
+  color: #fff;
+}
+
+.list .row {
+  border-bottom: 1px solid white;
+  color: #000;
+}
+
+.list .heading,
+.list .row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list .rowIncome {
+  background: #64db96;
+  color: white;
+}
+
+.list .rowExpense {
+  background: #ed685c;
+  color: white;
+}
+
+.field {
+  width: 200px;
+  padding: 15px;
+  word-wrap: break-word;
+}
+
+.field:last-of-type {
+  width: 120px;
+  text-align: right;
+}
+
+.field i {
+  cursor: pointer;
+  margin-right: 12px;
+}
+
+.results {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  padding: 30px 0;
+}
+
+.resultsIncome {
+  color: #64db96;
+}
+
+.resultsExpense {
+  color: #ed685c;
+}
+
+@media (max-width: 530px) {
+  .list {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 830px) {
+  .field,
+  .field:last-of-type {
+    width: 25%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
 import moment from "moment";
+import Title from "../Title/Title";
 import Form from "../Form/Form";
 import List from "../List/List";
 import "./App.css";
@@ -22,10 +23,10 @@ const App = () => {
   const formatNumber = (n) => parseFloat(n).toFixed(2);
   const formatTime = moment().format("MMM DD YYYY HH:mm");
 
-  const clearInputs = () => {
+  const clearInputs = (val) => {
     setDetail("");
     setAmount("");
-    setCategory("Income");
+    setCategory(val);
   };
 
   const addItem = () => {
@@ -83,13 +84,11 @@ const App = () => {
   };
 
   const cancelEdit = () => {
-    clearInputs();
     setcurrentId(null);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    clearInputs();
     setcurrentId(null);
     if (isInputInvalid()) return;
     !currentId ? addItem() : updateItem();
@@ -100,7 +99,6 @@ const App = () => {
       onLoading.current = false;
     } else {
       localStorage.setItem("items", JSON.stringify([...items]));
-      clearInputs();
       updateAmount();
     }
   }, [items]);
@@ -112,27 +110,31 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <Form
-        detail={detail}
-        setDetail={setDetail}
-        amount={amount}
-        setAmount={setAmount}
-        currentId={currentId}
-        handleSubmit={handleSubmit}
-        cancelEdit={cancelEdit}
-        category={category}
-        setCategory={setCategory}
-      />
-      <List
-        items={items}
-        removeItem={removeItem}
-        editItem={editItem}
-        income={income}
-        expense={expense}
-        total={total}
-      />
-    </div>
+    <>
+      <Title type="Budget" />
+      <div className="App">
+        <Form
+          detail={detail}
+          setDetail={setDetail}
+          amount={amount}
+          setAmount={setAmount}
+          currentId={currentId}
+          handleSubmit={handleSubmit}
+          cancelEdit={cancelEdit}
+          category={category}
+          setCategory={setCategory}
+          clearInputs={clearInputs}
+        />
+        <List
+          items={items}
+          removeItem={removeItem}
+          editItem={editItem}
+          income={income}
+          expense={expense}
+          total={total}
+        />
+      </div>
+    </>
   );
 };
 

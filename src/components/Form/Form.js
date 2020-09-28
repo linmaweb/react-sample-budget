@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./Form.css";
 
 const Form = ({
@@ -11,17 +11,26 @@ const Form = ({
   currentId,
   handleSubmit,
   cancelEdit,
+  clearInputs,
 }) => {
+  const categoryRef = useRef(null);
+
+  const submitReset = (e) => {
+    handleSubmit(e);
+    clearInputs(categoryRef.current.value);
+  };
+
   return (
     <div className="formWrapper">
       <div className="container">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={submitReset}>
           <div>
             <label>Category</label>
             <select
               defaultValue={category}
               onChange={(e) => setCategory(e.target.value)}
               autoFocus
+              ref={categoryRef}
             >
               <option value="Income">Income</option>
               <option value="Expense">Expense</option>
